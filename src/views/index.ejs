@@ -1,9 +1,48 @@
 <%-include('includes/head')%>
-<%-include('includes/nav')%>
-
 <body>
-    <h1>OLA MUNDO</h1>
-</body>
+    <%-include('includes/nav')%>
 
-<%-include('includes/script')%>
-</html>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2"></div>
+
+            <div class="col-lg-8 my-3">
+                <h1 class="text-center">Agenda</h1>
+                <p class="text-center lead">Lista de contatos</p>
+
+                <div class="row">
+                    <div class="col mAgoay-2">
+                        <div class="alert alert-danger text-center">Um erro ocorreu</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="responsive-table">
+                <table class="table my-3">
+                    <tr>
+                        <td>Marcos</td>
+                        <td>Miguel</td>
+                        <td>7545745</td>
+                        <td>125445555</td>
+                    </tr>
+                                        <tr>
+                        <td>Fernanda</td>
+                        <td>Gustavo</td>
+                        <td>7545745</td>
+                        <td>125445555</td>
+                    </tr>
+                                        <tr>
+                        <td>Leandro</td>
+                        <td>Junior</td>
+                        <td>7545745</td>
+                        <td>125445555</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="col-lg-2"></div>
+        </div>
+    </div>
+
+    <%-include('includes/script')%>
+</body>
