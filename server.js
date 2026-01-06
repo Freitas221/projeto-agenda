@@ -5,7 +5,7 @@ const routes = require('./routes')
 const path = require('path')
 const helmet = require('helmet')
 const csrf = require('csurf')
-const {middlewareGlobal, middleware, checkCsrf, csrfMiddleware} = require('./src/middlewares/middleware')
+const {middlewareGlobal, middleware, checkCsrfError, csrfMiddleware} = require('./src/middlewares/middleware')
 
 const mongoose = require('mongoose')
 mongoose.connect(process.env.CONNECTIONSTRING).then(() => {
@@ -51,10 +51,11 @@ app.use(csrf())
 
 app.use(middlewareGlobal)
 app.use(middleware)
-app.use(checkCsrf)
 app.use(csrfMiddleware)
 
 app.use(routes)
+app.use(checkCsrfError)
+
 
 app.on('ServerOn', ()=> {
     app.listen(3000, ()=> {
