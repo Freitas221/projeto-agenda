@@ -1,13 +1,10 @@
-exports.middleware = (req, res, next) => {
-    if(req.body.cliente) {
-        console.log()
-        console.log(`Objeto postado ${req.body.cliente}`)
-    }
+exports.middlewareGlobal = (req, res, next) => {
+    res.locals.errors = req.flash('errors')
+    res.locals.success = req.flash('success')
     next()
 }
 
-exports.middlewareGlobal = (req, res, next) => {
-    console.log(req.session.usuario)
+exports.middleware = (req, res, next) => {
     next()
 }
 
