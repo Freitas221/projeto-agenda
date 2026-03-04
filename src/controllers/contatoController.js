@@ -11,19 +11,21 @@ exports.register = async (req, res) => {
 
 
         if(contato.errors.length > 0) {
-        req.flash('errors', contato.errors)
-                req.session.save(() => {
-                return res.redirect(req.get('Referrer' || 'back'))
-                })
-                return   
+            req.flash('errors', contato.errors)
+            
+            req.session.save(() => {
+                return res.redirect(req.get('Referrer') || '/contato')
+            })
+            return   
             }
 
-            req.flash('success', 'Contato criado com sucesse')
+            req.flash('success', 'Contato criado com sucesso')
             req.session.save(() => {
-                return res.redirect(req.get('Referrer' || 'back'))
+                return res.redirect(req.get('Referrer') || '/contato' )
             })   
+            
         }catch(e) {
             console.log(e)
             return res.render('404')
-    }
+        }
 }

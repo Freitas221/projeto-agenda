@@ -11,9 +11,9 @@ exports.register = async function(req, res) {
         await login.register()
 
         if (login.errors.length > 0) {
-        req.flash('errors', login.errors)
-        req.session.save(function () {
-            return res.redirect(req.get('Referrer') || '/login')
+            req.flash('errors', login.errors)
+            req.session.save(function () {
+                return res.redirect(req.get('Referrer') || '/login')
         })
         return
         }
@@ -35,10 +35,10 @@ exports.login = async function(req, res) {
         await login.login()
 
         if (login.errors.length > 0) {
-        req.flash('errors', login.errors)
-        req.session.save(function () {
-            return res.redirect(req.get('Referrer') || '/login')
-        })
+            req.flash('errors', login.errors)
+            req.session.save(function () {
+                return res.redirect(req.get('Referrer') || '/login')
+            })
         return
         }
 

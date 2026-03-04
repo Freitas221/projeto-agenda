@@ -9,7 +9,7 @@ const ContatoSchema = new mongoose.Schema({
     criadoEm: {type: Date, default: Date.now}
 })
 
-const ContatoModel = mongoose.model('Home', HomeSchema)
+const ContatoModel = mongoose.model('Contato', ContatoSchema)
 
 class Contato {
     constructor(body) {
@@ -34,8 +34,9 @@ class Contato {
         } 
 
         if(!this.body.nome) this.errors.push('Nome é um campo obrigatório')
+
         if(!this.body.email && !this.body.telefone) {
-            this.errors.push('Nome ou Email devem ser preenchidos')
+            this.errors.push('Email ou telefone devem ser preenchidos')
         }
     }
 
