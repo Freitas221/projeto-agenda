@@ -17,15 +17,15 @@ exports.register = async (req, res) => {
                 return res.redirect(req.get('Referrer') || '/contato')
             })
             return   
-            }
-
-            req.flash('success', 'Contato criado com sucesso')
-            req.session.save(() => {
-                return res.redirect(req.get('Referrer') || '/contato' )
-            })   
-            
-        }catch(e) {
-            console.log(e)
-            return res.render('404')
         }
+
+        req.flash('success', 'Contato criado com sucesso')
+        req.session.save(() => {
+            return res.redirect(req.get('Referrer') || `/contato/${contato.contato._id}` )
+        })   
+            
+    }catch(e) {
+         console.log(e)
+        return res.render('404')
+    }
 }

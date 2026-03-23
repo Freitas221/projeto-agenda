@@ -38,5 +38,14 @@
     "webpack": "^5.99.6",
     "webpack-cli": "^6.0.1"
   },
-  "description": ""
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Freitas221/projeto-agenda.git"
+  },
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Freitas221/projeto-agenda/issues"
+  },
+  "homepage": "https://github.com/Freitas221/projeto-agenda#readme"
 }
