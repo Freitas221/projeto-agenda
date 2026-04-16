@@ -58,8 +58,8 @@ class Contato {
     async buscaId(id) {
         if(typeof id !== 'string' ) return 
         
-        const user = ContatoModel.findById(id)
-        return user
+        const contato = ContatoModel.findById(id)
+        return contato
     }
 }
 

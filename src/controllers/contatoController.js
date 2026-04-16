@@ -33,8 +33,8 @@ exports.register = async (req, res) => {
 exports.editContact = async function(req, res) {
     if(!req.params.id) return res.render('404')
     
-    const user = await Contato.buscaId(req.params.id)
-    if(!user) return res.render('404')
+    const contato = await Contato.buscaId(req.params.id)
+    if(!contato) return res.render('404')
         
-    res.render('contato', { user })
+    res.render('contato', { contato })
 } 
