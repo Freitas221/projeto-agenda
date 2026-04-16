@@ -23,12 +23,12 @@ class Login {
         this.user =  await LoginModel.findOne({email: this.body.email})
 
         if(!this.user) {
-            this.errors.push('Usuário não existe')
+            this.errors.push('Usuário ou senha inválidos')
             return
         }
 
         if(!bcryptjs.compareSync(this.body.password, this.user.password)) {
-            this.errors.push('Senha inválida')
+            this.errors.push('Usuário ou senha inválidos')
 
             this.user = null
             return
@@ -46,7 +46,7 @@ class Login {
 
         const salt = bcryptjs.genSaltSync()
 
-        this.body.password = bcryptjs.hashSync(this.body.password, salt) //Impede vermos a senha no banco
+        this.body.password = bcryptjs.hashSync(this.body.password, salt) //Impede ver a senha no banco
         this.user = await LoginModel.create(this.body)
     }
 
@@ -76,7 +76,7 @@ class Login {
     }
 
     async userExists() {
-    this.user =  await LoginModel.findOne({email: this.body.email})
+    this.user = await LoginModel.findOne({email: this.body.email})
       if(this.user) this.errors.push("Usuário já existente")
     }
 }

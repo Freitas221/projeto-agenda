@@ -54,6 +54,13 @@ class Contato {
             telefone: this.body.telefone,
         }
     }
+
+    async buscaId(id) {
+        if(typeof id !== 'string' ) return 
+        
+        const user = ContatoModel.findById(id)
+        return user
+    }
 }
 
 module.exports = Contato
