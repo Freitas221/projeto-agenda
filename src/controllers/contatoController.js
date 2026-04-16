@@ -29,3 +29,12 @@ exports.register = async (req, res) => {
         return res.render('404')
     }
 }
+
+exports.editContact = async function(req, res) {
+    if(!req.params.id) return res.render('404')
+    
+    const user = await Contato.buscaId(req.params.id)
+    if(!user) return res.render('404')
+        
+    res.render('contato', { user })
+} 
