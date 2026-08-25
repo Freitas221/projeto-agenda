@@ -1,7 +1,8 @@
 const Contato = require('../models/ContatoModel')
 
 exports.index = (req, res) => {
-    res.render('contato')
+    if(req.session.user) return res.render('contato')
+    return res.render('login')
 }
 
 exports.register = async (req, res) => {
