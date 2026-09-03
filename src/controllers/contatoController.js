@@ -32,10 +32,12 @@ exports.register = async (req, res) => {
 }
 
 exports.editContact = async function(req, res) {
+    const contato = new Contato(req.body)
+
     if(!req.params.id) return res.render('404')
     
-    const contato = await contato.buscaId(req.params.id)
-    if(!contato) return res.render('404') //problem
+    await contato.buscaId(req.params.id)
+    if(!contato) return res.render('404')
         
     res.render('contato', { contato })
 } 
