@@ -1,7 +1,9 @@
 const Contato = require('../models/ContatoModel')
 
 exports.index = (req, res) => {
-    if(req.session.user) return res.render('contato')
+    if(req.session.user) return res.render('contato', {
+        contato: {}
+    })
     return res.render('login')
 }
 

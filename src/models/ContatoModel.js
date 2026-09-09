@@ -61,6 +61,15 @@ class Contato {
         const contato = ContatoModel.findById(id)
         return contato
     }
+
+    async edit(id) {
+        if(typeof id !== 'string') return
+
+        this.valida()
+
+        if(this.error.length > 0) return
+        this.contato = await ContatoModel.findByIdAndUpdate(id, this.body, {new: true})
+    }
 }
 
 module.exports = Contato
