@@ -58,7 +58,8 @@ class Contato {
     async buscaId(id) {
         if(typeof id !== 'string' ) return 
         
-        const contato = ContatoModel.findById(id)
+        const contato = await ContatoModel.findById(id)
+
         return contato
     }
 
