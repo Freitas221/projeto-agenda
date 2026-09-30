@@ -17,7 +17,7 @@ exports.register = async (req, res) => {
             req.flash('errors', contato.errors)
             
             req.session.save(() => {
-                return res.redirect(req.get('Referrer') || '/contato')
+                return res.redirect('/contato')
             })
             return   
         }
@@ -36,9 +36,7 @@ exports.register = async (req, res) => {
 exports.editContact = async function(req, res) {
     if(!req.params.id) return res.render('404')
 
-    const contato = new Contato(req.body)
-
-    const contatoAtual = await contato.buscaId(req.params.id)
+    const contatoAtual = await Contato.buscaId(req.params.id)
 
     if(!contatoAtual) return res.render('404')
 

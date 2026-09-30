@@ -15,30 +15,19 @@
 
             <div class="responsive-table">
                 <table class="table my-3">
-                    <tr>
-                        <td>Marcos</td>
-                        <td>Miguel</td>
-                        <td>7545745</td>
-                        <td>125445555</td>
-                    </tr>
-
-                    <tr>
-                        <td>Fernanda</td>
-                        <td>Gustavo</td>
-                        <td>7545745</td>
-                        <td>125445555</td>
-                    </tr>
-                                        
-                    <tr>
-                        <td>Leandro</td>
-                        <td>Junior</td>
-                        <td>7545745</td>
-                        <td>125445555</td>
-                    </tr>
+                    <% contatos.forEach(contato => { %>
+                        <tr>
+                            <td><%= contato.nome %></td>
+                            <td><%= contato.sobrenome %></td>
+                            <td><%= contato.email %>></td>
+                            <td><%= contato.telefone %>></td>
+                            <td><a class="text-danger" href="/contato/<%= contato._id %>"> Editar</a></td>
+                            <td><a class="text-danger" href="/contato/<%= contato._id %>"> Excluir</a></td>
+                        </tr>
+                    <% }); %>
                 </table>
             </div>
-
-            <div class="col-lg-2"></div>
+        <div class="col-lg-2"></div>
         </div>
     </div>
     <%-include('includes/script')%>

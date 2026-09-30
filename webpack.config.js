@@ -1,4 +1,5 @@
 const path = require('path') //CommonJS
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     mode: 'production',
@@ -7,6 +8,8 @@ module.exports = {
         path: path.resolve(__dirname, 'public', 'assets', 'js'),
         filename: 'bundle.js'
     },
+    plugins: [new MiniCssExtractPlugin()],
+
     module: {
         rules: [{
             exclude: /node_modules/,
