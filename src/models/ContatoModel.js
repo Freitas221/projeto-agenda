@@ -79,6 +79,14 @@ class Contato {
 
         return contatos;
     }
+
+    static async deleteContato(id) {
+        if(typeof id !== 'string' ) return 
+
+        const contato = await ContatoModel.findOneAndDelete(id)
+
+        return contato
+    }
 }
 
 module.exports = Contato

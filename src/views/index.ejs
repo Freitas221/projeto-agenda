@@ -13,22 +13,25 @@
 
             <%- include('includes/messages')%>
 
-            <div class="responsive-table">
-                <table class="table my-3">
-                    <% contatos.forEach(contato => { %>
-                        <tr>
-                            <td><%= contato.nome %></td>
-                            <td><%= contato.sobrenome %></td>
-                            <td><%= contato.email %>></td>
-                            <td><%= contato.telefone %>></td>
-                            <td><a class="text-danger" href="/contato/<%= contato._id %>"> Editar</a></td>
-                            <td><a class="text-danger" href="/contato/<%= contato._id %>"> Excluir</a></td>
-                        </tr>
-                    <% }); %>
-                </table>
-            </div>
+            <% if(contato.length > 0) { %>
+                <div class="responsive-table">
+                    <table class="table my-3">
+                        <% contatos.forEach(contato => { %>
+                            <tr>
+                                <td><%= contato.nome %></td>
+                                <td><%= contato.sobrenome %></td>
+                                <td><%= contato.email %>></td>
+                                <td><%= contato.telefone %>></td>
+                                <td><a class="text-danger" href="/contato/<%= contato._id %>"> Editar</a></td>
+                                <td><a class="text-danger" href="/contato/delete/<%= contato._id %>"> Excluir</a></td>
+                            </tr>
+                        <% }); %>
+                    </table>
+                </div>
+            <%}else {%> 
+                <p class="text-center lead">Não há contatos para serem exibidos</p>
+            <% } %>    
         <div class="col-lg-2"></div>
-        </div>
     </div>
     <%-include('includes/script')%>
 </body>
