@@ -13,7 +13,7 @@
 
             <%- include('includes/messages')%>
 
-            <% if(contato.length > 0) { %>
+            <% if(contatos.length > 0) { %>
                 <div class="responsive-table">
                     <table class="table my-3">
                         <% contatos.forEach(contato => { %>
@@ -22,7 +22,7 @@
                                 <td><%= contato.sobrenome %></td>
                                 <td><%= contato.email %>></td>
                                 <td><%= contato.telefone %>></td>
-                                <td><a class="text-danger" href="/contato/<%= contato._id %>"> Editar</a></td>
+                                <td><a class="text-danger" href="/contato/edit/<%= contato._id %>"> Editar</a></td>
                                 <td><a class="text-danger" href="/contato/delete/<%= contato._id %>"> Excluir</a></td>
                             </tr>
                         <% }); %>

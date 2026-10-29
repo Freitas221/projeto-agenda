@@ -66,17 +66,17 @@ exports.edit = async(req, res) => {
     }catch(e) {
         throw new Error(e.getMessage())
     }
+}
 
-    exports.delete = async(req, res) => {
-        if(!req.params.id) return res.render('404')
+exports.delete = async(req, res) => {
+    if(!req.params.id) return res.render('404')
 
-        const contato = await Contato.deleteContato(req.params.id)
+    const contato = await Contato.deleteContato(req.params.id)
 
-        if(!contato) return res.render('404')
+    if(!contato) return res.render('404')
 
-        req.flash('success', 'Contato apagado com sucesso')
-        req.session.save(()=> {
-            return res.redirect('/contato')
-        })
-    }
+    req.flash('success', 'Contato apagado com sucesso')
+    req.session.save(()=> {
+        return res.redirect('/contato')
+    })
 }
