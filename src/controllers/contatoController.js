@@ -34,14 +34,19 @@ exports.register = async (req, res) => {
 }
 
 exports.editContact = async function(req, res) {
-    if(!req.params.id) return res.render('404')
+    if(!req.params.id) return res.render('404');
 
-    const contatoAtual = await Contato.buscaId(req.params.id)
+    try {
+        const contato = await Contato.buscaId(req.params.id);
 
-    if(!contatoAtual) return res.render('404')
+        if(!contato) return res.render('404');
 
-    res.render('contato', { contato: contatoAtual })
-}
+        return res.render('contato', { contato });
+    } catch(e) {
+        console.log(e);
+        return res.render('404');
+    }
+};
 
 exports.edit = async(req, res) => {
     
@@ -49,7 +54,7 @@ exports.edit = async(req, res) => {
         if(!req.params.id) return res.render('404')
         
         const contato  = new Contato(req.body)
-        const contatoAtual = await contato.edit(req.params.id)
+        await contato.edit(req.params.id)
 
         if(contato.errors.length > 0) {
             req.flash('errors', contato.errors)
@@ -61,10 +66,11 @@ exports.edit = async(req, res) => {
 
         req.flash('success', 'Contato editado com sucesso')
         req.session.save(()=> {
-           return res.redirect(`/contato/${contatoAtual._id}`)
+           return res.redirect(`/contato/${req.params.id}`)
         })
     }catch(e) {
-        throw new Error(e.getMessage())
+        console.log(e)
+        return res.render('404')
     }
 }
 
@@ -77,6 +83,6 @@ exports.delete = async(req, res) => {
 
     req.flash('success', 'Contato apagado com sucesso')
     req.session.save(()=> {
-        return res.redirect('/contato')
+        return res.redirect('/')
     })
 }
